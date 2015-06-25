@@ -11,7 +11,7 @@ class BigInteger{
         void add(BigInteger* number);
         void subtract(BigInteger* number);
         void multiply(BigInteger* number);
-        void devide(BigInteger* number);
+        void divide(BigInteger *number);
 
         ListInt* numbers = 0;
         std::string toString();

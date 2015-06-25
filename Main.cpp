@@ -16,5 +16,13 @@ int main(){
     std::cout << "Has to be 1000" << std::endl;
     std::cout << one->toString() << std::endl;
 
+    one->multiply(two);
+    std::cout << "Not yet implemented" << std::endl;
+    std::cout << one->toString() << std::endl;
+
+    one->divide(two);
+    std::cout << "Not yet implemented" << std::endl;
+    std::cout << one->toString() << std::endl;
+
     return 0;
 }

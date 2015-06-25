@@ -63,11 +63,11 @@ void BigInteger::subtract(BigInteger* number) {
     this->numbers = newNumbers;
 }
 
-void BigInteger::multiply(BigInteger* number) {
+void BigInteger::multiply(BigInteger *number) {
 
 }
 
-void BigInteger::devide(BigInteger* number) {
+void BigInteger::divide(BigInteger *number) {
 
 }
 
