@@ -33,14 +33,34 @@ void BigInteger::add(BigInteger* number){
 
     newNumbers->add(remembered);
 
-    this->numbers->clear();
     delete(this->numbers);
 
     this->numbers = newNumbers;
 }
 
 void BigInteger::subtract(BigInteger* number) {
+    IteratorInt* thisIterator = this->numbers->getIterator();
+    IteratorInt* otherIterator = number->numbers->getIterator();
 
+    ListInt* newNumbers = new ListInt();
+
+    int remembered = 0;
+    while (thisIterator->hasNext()|| otherIterator->hasNext())
+    {
+        int result = thisIterator->getNext() - otherIterator->getNext() - remembered;
+        if(result < 0){
+            remembered = 1;
+            result = 10 + result;
+        }
+        else
+            remembered = 0;
+
+        newNumbers->add(result);
+    }
+
+    delete(this->numbers);
+
+    this->numbers = newNumbers;
 }
 
 void BigInteger::multiply(BigInteger* number) {
@@ -49,6 +69,14 @@ void BigInteger::multiply(BigInteger* number) {
 
 void BigInteger::devide(BigInteger* number) {
 
+}
+
+std::string BigInteger::toString() {
+    std::string output = "";
+    IteratorInt* iterator = this->numbers->getIterator();
+    while (iterator->hasNext())
+        output = std::to_string(iterator->getNext()) + output;
+    return output;
 }
 
 #endif

@@ -10,6 +10,10 @@
         this->value = value;
     }
 
+    ListItemInt::~ListItemInt(){
+
+    }
+
     int ListItemInt::count(int parents)
     {
         if(next != 0)

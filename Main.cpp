@@ -5,12 +5,16 @@ using namespace std;
 
 int main(){
 
-    BigInteger* one = new BigInteger("999");
-    BigInteger* two = new BigInteger("2");
+    BigInteger* one = new BigInteger("1000");
+    BigInteger* two = new BigInteger("1");
+
+    one->subtract(two);
+    std::cout << "Has to be 999" << std::endl;
+    std::cout << one->toString() << std::endl;
 
     one->add(two);
-
-    one->numbers->print();
+    std::cout << "Has to be 1000" << std::endl;
+    std::cout << one->toString() << std::endl;
 
     return 0;
 }

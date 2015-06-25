@@ -13,6 +13,7 @@ class ListInt {
         ListItemInt * root = 0;
     
     public:
+        ~ListInt();
         void add(int value);
         void insert(int value, int index);
         void remove(int index);

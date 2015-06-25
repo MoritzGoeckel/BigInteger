@@ -8,6 +8,10 @@
 
 #include <iostream>
 
+        ListInt::~ListInt(){
+            clear();
+        }
+
         void ListInt::add(int value)
         {    
             if(root != 0)

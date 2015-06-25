@@ -9,7 +9,8 @@ class ListItemInt {
         ListItemInt * next = 0;
         
         ListItemInt(int value);
-
+        ~ListItemInt();
+    
         int value;
         int count(int parents);
         void clear();

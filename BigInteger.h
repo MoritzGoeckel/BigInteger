@@ -14,6 +14,8 @@ class BigInteger{
         void devide(BigInteger* number);
 
         ListInt* numbers = 0;
+        std::string toString();
+
 };
 
 #endif
