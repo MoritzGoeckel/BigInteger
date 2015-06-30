@@ -124,7 +124,7 @@ void BigInteger::divide(BigInteger *other) {
 
 }
 
-void BigInteger::mudolo(BigInteger *other){
+void BigInteger::modulo(BigInteger *other){
     if(this->subtract(other) == false)
         return;
 

@@ -19,7 +19,7 @@ class BigInteger{
         void multiply(BigInteger* other);
 
         void divide(BigInteger *other);
-        void mudolo(BigInteger *other);
+        void modulo(BigInteger *other);
 
         std::vector<int> numbers;
         std::string toString();
