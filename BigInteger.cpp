@@ -36,8 +36,6 @@ void BigInteger::add(BigInteger* other){
     if(remembered != 0)
         newNumbers.push_back(remembered);
 
-    //this->numbers.clear();
-
     this->numbers = newNumbers;
 }
 
@@ -64,7 +62,8 @@ void BigInteger::subtract(BigInteger* other) {
         i++;
     }
 
-    //this->numbers.clear();
+    while (newNumbers.at(newNumbers.size() - 1) == 0)
+        newNumbers.pop_back();
 
     this->numbers = newNumbers;
 }
