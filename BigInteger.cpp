@@ -131,20 +131,21 @@ void BigInteger::mudolo(BigInteger *other){
 
     //Copy array
     std::vector<int> otherTmp;
-    for(int i = other->numbers.size() - 1; i >= 0; i--)
+    for(int i = 0; i < other->numbers.size(); i++)
         otherTmp.push_back(other->numbers.at(i));
 
     int initialLength = otherTmp.size();
 
     //Try to approximate
     while (this->numbers.size() > otherTmp.size())
-        otherTmp.insert (otherTmp.begin(), 0); //Add 0 at beginning
+        otherTmp.insert(otherTmp.begin(), 0); //Add 0 at beginning
+
+    int s = otherTmp.size();
+    int d = this->numbers.size();
 
     while (otherTmp.size() >= initialLength) {
         while (this->subtract(otherTmp)); //Subtract as much as possible
         otherTmp.erase(otherTmp.begin());
-        int size = otherTmp.size();
-        int b = 2;
     }
 }
 

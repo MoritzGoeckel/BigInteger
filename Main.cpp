@@ -33,11 +33,11 @@ int main(){
     //std::cout << "Not yet implemented" << std::endl;
     //std::cout << one->toString() << std::endl;
 
-    BigInteger* oneHundred = new BigInteger("100");
-    BigInteger* four = new BigInteger("6");
+    BigInteger* oneHundred = new BigInteger("34567890");
+    BigInteger* four = new BigInteger("45678");
 
     oneHundred->mudolo(four);
-    std::cout << "-!> 0" << std::endl;
+    std::cout << "-!> 35322" << std::endl;
     std::cout << oneHundred->toString() << std::endl;
 
     return 0;
