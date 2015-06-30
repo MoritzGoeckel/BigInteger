@@ -8,7 +8,7 @@ This is a BigInteger implementation for C++. It supports operations on unlimited
 - Modulo
 
 ### Yet unsupported:
-- Devision
+- Division
 
 ## Usage:
 ```cpp
