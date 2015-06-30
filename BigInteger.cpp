@@ -43,33 +43,44 @@ void BigInteger::add(std::vector<int> other) {
     this->numbers = newNumbers;
 }
 
-void BigInteger::subtract(BigInteger* other) {
+bool BigInteger::subtract(BigInteger* other) {
+    return subtract(other->numbers);
+}
+
+bool BigInteger::subtract(std::vector<int> other) {
     std::vector<int> newNumbers;
 
     int remembered = 0;
     int i = 0;
-    while (i < this->numbers.size() || i < other->numbers.size())
+    while (i < this->numbers.size() || i < other.size() || remembered != 0)
     {
+        if(i >= this->numbers.size() && i >= other.size() && remembered != 0)
+            return false; //Subtraction was impossible
+
         int result =   (i < this->numbers.size() ? this->numbers.at(i) : 0)
-                       - (i < other->numbers.size() ? other->numbers.at(i) : 0)
+                       - (i < other.size() ? other.at(i) : 0)
                        - (remembered);
 
+        remembered = 0;
+
         if(result < 0){
-            remembered = 1;
-            result = 10 + result;
+            while (result < 0) {
+                result = result + 10;
+                remembered++;
+            }
         }
-        else
-            remembered = 0;
 
         newNumbers.push_back(result);
 
         i++;
     }
 
-    while (newNumbers.at(newNumbers.size() - 1) == 0)
+    while (newNumbers.size() > 1 && newNumbers.at(newNumbers.size() - 1) == 0)
         newNumbers.pop_back();
 
     this->numbers = newNumbers;
+
+    return true; //Subtraction was possible
 }
 
 void BigInteger::multiply(BigInteger *other) {
@@ -115,7 +126,26 @@ void BigInteger::divide(BigInteger *other) {
 }
 
 void BigInteger::mudolo(BigInteger *other){
+    if(this->subtract(other) == false)
+        return;
 
+    //Copy array
+    std::vector<int> otherTmp;
+    for(int i = other->numbers.size() - 1; i >= 0; i--)
+        otherTmp.push_back(other->numbers.at(i));
+
+    int initialLength = otherTmp.size();
+
+    //Try to approximate
+    while (this->numbers.size() > otherTmp.size())
+        otherTmp.insert (otherTmp.begin(), 0); //Add 0 at beginning
+
+    while (otherTmp.size() >= initialLength) {
+        while (this->subtract(otherTmp)); //Subtract as much as possible
+        otherTmp.erase(otherTmp.begin());
+        int size = otherTmp.size();
+        int b = 2;
+    }
 }
 
 std::string BigInteger::toString() {

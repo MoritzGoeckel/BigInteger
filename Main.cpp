@@ -25,13 +25,20 @@ int main(){
     std::cout << "-!> 14760" << std::endl;
     std::cout << one->toString() << std::endl;
 
+    std::cout << "-!> 0, 5" << std::endl;
+    std::cout << two->subtract(three) << std::endl;
+    std::cout << two->toString() << std::endl;
+
     //one->divide(two);
     //std::cout << "Not yet implemented" << std::endl;
     //std::cout << one->toString() << std::endl;
 
-    //one->mudolo(two);
-    //std::cout << "Not yet implemented" << std::endl;
-    //std::cout << one->toString() << std::endl;
+    BigInteger* oneHundred = new BigInteger("100");
+    BigInteger* four = new BigInteger("6");
+
+    oneHundred->mudolo(four);
+    std::cout << "-!> 0" << std::endl;
+    std::cout << oneHundred->toString() << std::endl;
 
     return 0;
 }
