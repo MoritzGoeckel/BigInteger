@@ -9,11 +9,13 @@ class BigInteger{
 
     public:
         BigInteger(std::string number);
-        void add(BigInteger* number);
-        void subtract(BigInteger* number);
-        void multiply(BigInteger* number);
-        void divide(BigInteger *number);
-        void mudolo(BigInteger *number);
+        void add(BigInteger* other);
+        void add(std::vector<int> other);
+
+        void subtract(BigInteger* other);
+        void multiply(BigInteger* other);
+        void divide(BigInteger *other);
+        void mudolo(BigInteger *other);
 
         std::vector<int> numbers;
         std::string toString();

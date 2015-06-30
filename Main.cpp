@@ -5,34 +5,33 @@ using namespace std;
 
 int main(){
 
-    BigInteger* one = new BigInteger("100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+    BigInteger* one = new BigInteger("123");
+    std::cout << "-!> 123" << std::endl;
     std::cout << one->toString() << std::endl;
 
-    BigInteger* two = new BigInteger("1");
+    BigInteger* two = new BigInteger("5");
+
+    BigInteger* three = new BigInteger("120");
 
     one->subtract(two);
-    std::cout << "Has to be 99...9" << std::endl;
+    std::cout << "-!> 118" << std::endl;
     std::cout << one->toString() << std::endl;
 
     one->add(two);
-    std::cout << "Has to be 100...0" << std::endl;
+    std::cout << "-!> 123" << std::endl;
     std::cout << one->toString() << std::endl;
 
-    one->add(two);
-    std::cout << "Has to be 100...1" << std::endl;
+    one->multiply(three);
+    std::cout << "-!> 14760" << std::endl;
     std::cout << one->toString() << std::endl;
 
-    one->multiply(two);
-    std::cout << "Not yet implemented" << std::endl;
-    std::cout << one->toString() << std::endl;
+    //one->divide(two);
+    //std::cout << "Not yet implemented" << std::endl;
+    //std::cout << one->toString() << std::endl;
 
-    one->divide(two);
-    std::cout << "Not yet implemented" << std::endl;
-    std::cout << one->toString() << std::endl;
-
-    one->mudolo(two);
-    std::cout << "Not yet implemented" << std::endl;
-    std::cout << one->toString() << std::endl;
+    //one->mudolo(two);
+    //std::cout << "Not yet implemented" << std::endl;
+    //std::cout << one->toString() << std::endl;
 
     return 0;
 }
