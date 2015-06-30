@@ -2,25 +2,25 @@
 #define CPP_BIGINTEGER_BIGINTEGER_IMPLEMENTATION
 
 #include <stdlib.h>
+#include <iosfwd>
 #include "BigInteger.h"
 
 BigInteger::BigInteger(std::string number) {
-    this->numbers = new ListInt();
-
-    for (int i=0;i<number.length();i++)
-        numbers->insert(number[i] - '0', 0);
+    for (int i=number.length() - 1;i>=0;i--)
+        numbers.push_back(number[i] - '0');
 }
 
-void BigInteger::add(BigInteger* number){
-    IteratorInt* thisIterator = this->numbers->getIterator();
-    IteratorInt* otherIterator = number->numbers->getIterator();
-
-    ListInt* newNumbers = new ListInt();
+void BigInteger::add(BigInteger* other){
+    std::vector<int> newNumbers;
 
     int remembered = 0;
-    while (thisIterator->hasNext()|| otherIterator->hasNext())
+    int i = 0;
+    while ( i < this->numbers.size() || i < other->numbers.size())
     {
-        int result = thisIterator->getNext() + otherIterator->getNext() + remembered;
+        int result =   (i < this->numbers.size() ? this->numbers.at(i) : 0)
+                     + (i < other->numbers.size() ? other->numbers.at(i) : 0)
+                     + (remembered);
+
         if(result >= 10){
             remembered = 1;
             result = result - 10;
@@ -28,26 +28,30 @@ void BigInteger::add(BigInteger* number){
         else
             remembered = 0;
 
-        newNumbers->add(result);
+        newNumbers.push_back(result);
+
+        i++;
     }
 
-    newNumbers->add(remembered);
+    if(remembered != 0)
+        newNumbers.push_back(remembered);
 
-    delete(this->numbers);
+    //this->numbers.clear();
 
     this->numbers = newNumbers;
 }
 
-void BigInteger::subtract(BigInteger* number) {
-    IteratorInt* thisIterator = this->numbers->getIterator();
-    IteratorInt* otherIterator = number->numbers->getIterator();
-
-    ListInt* newNumbers = new ListInt();
+void BigInteger::subtract(BigInteger* other) {
+    std::vector<int> newNumbers;
 
     int remembered = 0;
-    while (thisIterator->hasNext()|| otherIterator->hasNext())
+    int i = 0;
+    while (i < this->numbers.size() || i < other->numbers.size())
     {
-        int result = thisIterator->getNext() - otherIterator->getNext() - remembered;
+        int result =   (i < this->numbers.size() ? this->numbers.at(i) : 0)
+                       - (i < other->numbers.size() ? other->numbers.at(i) : 0)
+                       - (remembered);
+
         if(result < 0){
             remembered = 1;
             result = 10 + result;
@@ -55,10 +59,12 @@ void BigInteger::subtract(BigInteger* number) {
         else
             remembered = 0;
 
-        newNumbers->add(result);
+        newNumbers.push_back(result);
+
+        i++;
     }
 
-    delete(this->numbers);
+    //this->numbers.clear();
 
     this->numbers = newNumbers;
 }
@@ -71,11 +77,14 @@ void BigInteger::divide(BigInteger *number) {
 
 }
 
+void BigInteger::mudolo(BigInteger *number){
+
+}
+
 std::string BigInteger::toString() {
     std::string output = "";
-    IteratorInt* iterator = this->numbers->getIterator();
-    while (iterator->hasNext())
-        output = std::to_string(iterator->getNext()) + output;
+    for (int i = 0; i < numbers.size(); i++)
+        output = std::to_string(numbers.at(i)) + output;
     return output;
 }
 

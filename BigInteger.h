@@ -1,8 +1,9 @@
 #ifndef CPP_BIGINTEGER_BIGINTEGER_H
 #define CPP_BIGINTEGER_BIGINTEGER_H
 
+#include <string>
+#include <vector>
 #include "BigInteger.h"
-#include "ListInt/ListInt.h"
 
 class BigInteger{
 
@@ -12,8 +13,9 @@ class BigInteger{
         void subtract(BigInteger* number);
         void multiply(BigInteger* number);
         void divide(BigInteger *number);
+        void mudolo(BigInteger *number);
 
-        ListInt* numbers = 0;
+        std::vector<int> numbers;
         std::string toString();
 
 };
