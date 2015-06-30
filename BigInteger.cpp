@@ -84,7 +84,6 @@ bool BigInteger::subtract(std::vector<int> other) {
 }
 
 void BigInteger::multiply(BigInteger *other) {
-
     std::vector<std::vector<int>> results;
     for(int i = 0; i < this->numbers.size(); i++)
     {
@@ -139,9 +138,6 @@ void BigInteger::mudolo(BigInteger *other){
     //Try to approximate
     while (this->numbers.size() > otherTmp.size())
         otherTmp.insert(otherTmp.begin(), 0); //Add 0 at beginning
-
-    int s = otherTmp.size();
-    int d = this->numbers.size();
 
     while (otherTmp.size() >= initialLength) {
         while (this->subtract(otherTmp)); //Subtract as much as possible
