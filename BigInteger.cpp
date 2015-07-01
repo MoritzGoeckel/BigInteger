@@ -87,33 +87,35 @@ void BigInteger::multiply(BigInteger *other) {
     std::vector<std::vector<int>> results;
     for(int i = 0; i < this->numbers.size(); i++)
     {
+        //Use the next right number
         std::vector<int> row_result;
-        int right = this->numbers.at(i);
+        int rightNumber = this->numbers.at(i);
 
+        //Fill the row_results with 0's according to the position of rightNumber
         for (int a = 0; a < i; a++)
             row_result.push_back(0);
 
-        int keep = 0;
+        //Do the multiplication on every leftNumber with the one rightNumber
+        int remembered = 0;
         for(int a = 0; a < other->numbers.size(); a++)
         {
-            int left = other->numbers.at(a);
-            int result = (left * right) + keep;
+            int leftNumber = other->numbers.at(a);
+            int result = (leftNumber * rightNumber) + remembered;
 
             if(result >= 10){
-                keep = 1;
+                remembered = 1;
                 result = result - 10;
             }
             else
-                keep = 0;
+                remembered = 0;
 
             row_result.push_back(result);
         }
         results.push_back(row_result);
     }
 
-    //Alle results addieren
+    //Add all results
     BigInteger result("0");
-
     for(int i = 0; i < results.size(); i++)
         result.add(results.at(i));
 
@@ -125,23 +127,26 @@ void BigInteger::divide(BigInteger *other) {
 }
 
 void BigInteger::modulo(BigInteger *other){
+
+    //If: (other > this) Then: result = this So: there is nothing to do
     if(this->subtract(other) == false)
         return;
 
-    //Copy array
+    //Copy array of other (the smaller number)
     std::vector<int> otherTmp;
     for(int i = 0; i < other->numbers.size(); i++)
         otherTmp.push_back(other->numbers.at(i));
 
+    //Save the length, because we are going to add and remove 0's, and we have to go back in the end
     int initialLength = otherTmp.size();
 
-    //Try to approximate
+    //Try to approximate by adding 0's (multiplying by 10)
     while (this->numbers.size() > otherTmp.size())
         otherTmp.insert(otherTmp.begin(), 0); //Add 0 at beginning
 
     while (otherTmp.size() >= initialLength) {
         while (this->subtract(otherTmp)); //Subtract as much as possible
-        otherTmp.erase(otherTmp.begin());
+        otherTmp.erase(otherTmp.begin()); //Remove one 0 (= divide by 10)
     }
 }
 
