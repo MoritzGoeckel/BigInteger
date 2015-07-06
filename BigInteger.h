@@ -9,6 +9,7 @@ class BigInteger{
 
     public:
         BigInteger(std::string number);
+        BigInteger(BigInteger* otherInteger);
 
         void add(BigInteger* other);
         void add(std::vector<int> other);
@@ -18,11 +19,16 @@ class BigInteger{
 
         void multiply(BigInteger* other);
 
-        void divide(BigInteger *other);
+        //void divide(BigInteger *other);
         void modulo(BigInteger *other);
+
+        void toPowerOf(BigInteger *other);
 
         std::vector<int> numbers;
         std::string toString();
+
+    private:
+        void declareFromString(std::string number);
 
 };
 

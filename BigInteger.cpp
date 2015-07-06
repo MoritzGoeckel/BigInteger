@@ -3,9 +3,18 @@
 
 #include <stdlib.h>
 #include <iosfwd>
+#include <iostream>
 #include "BigInteger.h"
 
 BigInteger::BigInteger(std::string number) {
+    declareFromString(number);
+}
+
+BigInteger::BigInteger(BigInteger *otherInteger) {
+    declareFromString(otherInteger->toString());
+}
+
+void BigInteger::declareFromString(std::string number) {
     for (int i=number.length() - 1;i>=0;i--)
         numbers.push_back(number[i] - '0');
 }
@@ -119,12 +128,15 @@ void BigInteger::multiply(BigInteger *other) {
     for(int i = 0; i < results.size(); i++)
         result.add(results.at(i));
 
+    while (result.numbers.size() > 1 && result.numbers.at(result.numbers.size() - 1) == 0)
+        result.numbers.pop_back();
+
     this->numbers = result.numbers;
 }
 
-void BigInteger::divide(BigInteger *other) {
+/*void BigInteger::divide(BigInteger *other) {
 
-}
+}*/
 
 void BigInteger::modulo(BigInteger *other){
 
@@ -155,6 +167,27 @@ std::string BigInteger::toString() {
     for (int i = 0; i < numbers.size(); i++)
         output = std::to_string(numbers.at(i)) + output;
     return output;
+}
+
+void BigInteger::toPowerOf(BigInteger *other) {
+    BigInteger* otherInteger = new BigInteger(other);
+
+    BigInteger* oldValue = new BigInteger(this->toString());
+
+    BigInteger* one = new BigInteger("1");
+    while (!(otherInteger->numbers.size() == 1 && otherInteger->numbers.at(0) == 1))
+    {
+        /*std::cout << "NOW = " << this->toString() << std::endl;
+        std::cout << "I = " << otherInteger->toString() << std::endl;
+        std::cout << "OLD = " << oldValue->toString() << std::endl;*/
+
+        this->multiply(oldValue);
+        otherInteger->subtract(one);
+    }
+
+    delete one;
+    delete otherInteger;
+    delete oldValue;
 }
 
 #endif
