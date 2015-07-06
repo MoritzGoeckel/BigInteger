@@ -111,15 +111,18 @@ void BigInteger::multiply(BigInteger *other) {
             int leftNumber = other->numbers.at(a);
             int result = (leftNumber * rightNumber) + remembered;
 
-            if(result >= 10){
-                remembered = 1;
+            remembered = 0;
+            while(result >= 10){
+                remembered = remembered + 1;
                 result = result - 10;
             }
-            else
-                remembered = 0;
 
             row_result.push_back(result);
         }
+
+        if(remembered != 0)
+            row_result.push_back(remembered);
+
         results.push_back(row_result);
     }
 
