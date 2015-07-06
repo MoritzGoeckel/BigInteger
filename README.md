@@ -40,6 +40,6 @@ This is a BigInteger implementation for C++. It supports operations on unlimited
  std::cout << one->toString() << std::endl;
 
  //Power of
- one->toPowerOf(two);
+ one->powerOf(two);
  std::cout << one->toString() << std::endl;
 ```

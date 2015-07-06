@@ -65,19 +65,19 @@ void toPowerOfTest(){
     BigInteger* one = new BigInteger("10");
     BigInteger* two = new BigInteger("3");
 
-    one->toPowerOf(two);
+    one->powerOf(two);
     std::cout << "-!> 1000 = " << one->toString() << std::endl;
 
     BigInteger* three = new BigInteger("5");
     BigInteger* four = new BigInteger("3");
 
-    three->toPowerOf(four);
+    three->powerOf(four);
     std::cout << "-!> 125 = " << three->toString() << std::endl;
 
     BigInteger* five = new BigInteger("12");
     BigInteger* six = new BigInteger("127");
 
-    five->toPowerOf(six);
+    five->powerOf(six);
     std::cout << "-!> 1.137675e+137 = " << five->toString() << std::endl;
 }
 

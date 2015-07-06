@@ -22,7 +22,7 @@ class BigInteger{
         //void divide(BigInteger *other);
         void modulo(BigInteger *other);
 
-        void toPowerOf(BigInteger *other);
+        void powerOf(BigInteger *other);
 
         std::vector<int> numbers;
         std::string toString();

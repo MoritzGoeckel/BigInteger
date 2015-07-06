@@ -172,7 +172,7 @@ std::string BigInteger::toString() {
     return output;
 }
 
-void BigInteger::toPowerOf(BigInteger *other) {
+void BigInteger::powerOf(BigInteger *other) {
     BigInteger* otherInteger = new BigInteger(other);
 
     BigInteger* oldValue = new BigInteger(this->toString());
@@ -180,10 +180,6 @@ void BigInteger::toPowerOf(BigInteger *other) {
     BigInteger* one = new BigInteger("1");
     while (!(otherInteger->numbers.size() == 1 && otherInteger->numbers.at(0) == 1))
     {
-        /*std::cout << "NOW = " << this->toString() << std::endl;
-        std::cout << "I = " << otherInteger->toString() << std::endl;
-        std::cout << "OLD = " << oldValue->toString() << std::endl;*/
-
         this->multiply(oldValue);
         otherInteger->subtract(one);
     }
