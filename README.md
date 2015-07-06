@@ -6,6 +6,7 @@ This is a BigInteger implementation for C++. It supports operations on unlimited
 - Subtraction
 - Multiplication
 - Modulo
+- Power of n
 
 ### Yet unsupported:
 - Division
