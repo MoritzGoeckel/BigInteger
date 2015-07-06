@@ -73,6 +73,12 @@ void toPowerOfTest(){
 
     three->toPowerOf(four);
     std::cout << "-!> 125 = " << three->toString() << std::endl;
+
+    BigInteger* five = new BigInteger("12");
+    BigInteger* six = new BigInteger("127");
+
+    five->toPowerOf(six);
+    std::cout << "-!> 1.137675e+137 = " << five->toString() << std::endl;
 }
 
 int main(){
