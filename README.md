@@ -38,4 +38,8 @@ This is a BigInteger implementation for C++. It supports operations on unlimited
  //Simple modulo
  one->modulo(two);
  std::cout << one->toString() << std::endl;
+
+ //Power of
+ one->toPowerOf(two);
+ std::cout << one->toString() << std::endl;
 ```
