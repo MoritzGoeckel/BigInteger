@@ -27,6 +27,8 @@ class BigInteger{
         std::vector<int> numbers;
         std::string toString();
 
+        //Todo: Modulo of exponential number
+
     private:
         void declareFromString(std::string number);
 

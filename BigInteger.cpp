@@ -172,7 +172,7 @@ std::string BigInteger::toString() {
     return output;
 }
 
-void BigInteger::powerOf(BigInteger *other) {
+void BigInteger::powerOf(BigInteger *other){
     BigInteger* otherInteger = new BigInteger(other);
 
     BigInteger* oldValue = new BigInteger(this->toString());
@@ -183,6 +183,8 @@ void BigInteger::powerOf(BigInteger *other) {
         this->multiply(oldValue);
         otherInteger->subtract(one);
     }
+
+    //Todo: https://de.wikipedia.org/wiki/Bin%C3%A4re_Exponentiation
 
     delete one;
     delete otherInteger;
